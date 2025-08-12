@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Probador de CSS Simple</title>
+    
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #e0e7ff;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 820px;
+            margin: 40px auto 0 auto;
+            padding: 32px 28px 32px 28px;
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px 40px;
+            background: #f8fafc;
+            padding: 28px 24px 18px 24px;
+            border: 1.5px solid #c7d2fe;
+            border-radius: 10px;
+            font-size: 1.34rem;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            min-width: 220px;
+        }
+
+        label {
+            font-weight: 600;
+            color: #3b3b3b;
+            margin-bottom: 1px;
+            letter-spacing: 0.01em;
+        }
+
+        input,
+        select {
+            font-size: 1.30rem;
+            border: 1.5px solid #c7d2fe;
+            padding: 8px 12px;
+            background: #f8fafc;
+            color: #222;
+            outline: none;
+            transition: border 0.2s;
+        }
+
+        input:focus,
+        select:focus {
+            border: 1.9px solid #6366f1;
+        }
+
+        input[type="color"] {
+            height: 44px;
+            width: 44px;
+            padding: 0;
+            border: noen;
+            background: #fff;
+            cursor: pointer;
+            margin-bottom: 5px;
+        }
+
+        .preview {
+            background: linear-gradient(90deg, #f3f6fd 0%, #e0e7ff 100%);
+            padding: 38px 32px 38px 32px;
+            border: 1.5px solid #c7d2fe;
+            min-height: 110px;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+
+        .preview h2 {
+            margin-top: 0;
+            font-size: 1.25rem;
+            color: #6366f1;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+        }
+
+        .preview p {
+            font-size: 1.25rem;
+            color: #121212;
+            margin-bottom: 0.5em;
+        }
+
+        .contrast-checker {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            background: #f8fafc;
+            border: 1.5px solid #c7d2fe;
+            border-radius: 10px;
+            padding: 18px 22px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        .contrast-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-right: 18px;
+        }
+
+        .contrast-label {
+            font-weight: 700;
+            color: #6366f1;
+        }
+
+        .contrast-ratio {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.25em;
+            color: #222;
+        }
+
+        .contrast-wcag {
+            display: flex;
+            gap: 12px;
+            margin-right: 18px;
+        }
+
+        .wcag-badge {
+            padding: 4px 14px;
+            font-weight: 700;
+            font-size: 1.05em;
+            border: 1.5px solid #c7d2fe;
+        }
+
+        .wcag-badge.pass {
+            background: #bbf7d0;
+            color: #15803d;
+            border: 1.5px solid #22c55e;
+        }
+
+        .wcag-badge.fail {
+            background: #fee2e2;
+            color: #b91c1c;
+            border: 1.5px solid #ef4444;
+        }
+
+        .contrast-desc {
+            font-size: 1em;
+            color: #666;
+            margin-left: 10px;
+        }
+
+        .copy-btn {
+            background: #f8fafc;
+            color: #121212;
+            padding: 12px 30px;
+            font-size: 1.1em;
+            border: 1px solid #c7d2fe;
+            cursor: pointer;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .copy-btn:hover {
+            background-color: #f8fafc;
+        }
+
+        .code-output {
+            background: #f2f5f9;
+            color: #18181b;
+            padding: 18px 20px 18px 20px;
+            font-family: 'JetBrains Mono', 'Fira Mono', 'Consolas', monospace;
+            overflow-x: auto;
+            border-radius: 10px;
+            font-size: 1.55em;
+            position: relative;
+            margin-bottom: 0;
+        }
+
+        .code-output .copy-btn {
+            position: absolute;
+            top: 14px;
+            right: 18px;
+            padding: 5px 14px;
+            font-size: 0.78em;
+            border-radius: 5px;
+            background: #23232b;
+            color: #fff;
+            border: none;
+            box-shadow: 0 1px 4px #0002;
+            opacity: 0.85;
+            z-index: 2;
+        }
+
+        .code-output .copy-btn:hover {
+            background: #23232bc6;
+            color: #fff;
+            opacity: 1;
+        }
+
+        .code-output pre {
+            margin: 0;
+            background: none;
+            color: inherit;
+        }
+
+        /* @media (max-width: 700px) {
+            .container {
+                padding: 10px 2vw;
+            }
+
+            .controls {
+                flex-direction: column;
+                gap: 18px;
+                padding: 16px 8px 10px 8px;
+            }
+
+            .preview {
+                padding: 18px 8px 18px 8px;
+            }
+
+            .contrast-checker {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+                padding: 10px 6px;
+            }
+        } */
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="controls">
+            <div class="control-group">
+                <label for="textColor">Color del texto:</label>
+                <input type="color" id="textColor" value="#292222">
+                <label for="fontSize">Tamaño de fuente:</label>
+                <select id="fontSize">
+                    <option value="14px">14px</option>
+                    <option value="16px">16px</option>
+                    <option value="18px" selected>18px</option>
+                    <option value="24px">24px</option>
+                    <option value="35px">35px</option>
+                    <option value="45px">45px</option>
+                    <option value="55px">55px</option>
+                    <option value="65px">65px</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="bgColor">Color de fondo:</label>
+                <input type="color" id="bgColor" value="#F8FAFC">
+                <label for="fontWeight">Peso de fuente:</label>
+                <select id="fontWeight">
+                    <option value="normal">Normal</option>
+                    <option value="bold">Bold</option>
+                    <option value="lighter" selected>Light</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="preview" id="preview">
+            <h2>¡Bienvenidos al modo creativo!</h2>
+            <p>Modifica el diseño y observa cómo esta vista previa se adapta al instante.</p>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id delectus harum commodi quibusdam quam
+                dolorum quasi quidem libero! Sed doloremque sit explicabo unde recusandae commodi facilis eius nobis
+                tenetur cum?</p>
+        </div>
+        <div class="contrast-checker" id="contrastChecker">
+            <div class="contrast-info">
+                <span class="contrast-label">Contraste:</span>
+                <span class="contrast-ratio" id="contrastRatio">-</span>
+            </div>
+            <div class="contrast-wcag">
+                <span class="wcag-badge" id="aaBadge">AA</span>
+                <span class="wcag-badge" id="aaaBadge">AAA</span>
+            </div>
+            <div class="contrast-desc" id="contrastDesc"></div>
+        </div>
+
+        <div class="code-output">
+            <button class="copy-btn" onclick="copyCode()">
+                Copiar CSS
+            </button>
+            <pre id="cssCode"></pre>
+        </div>
+    </div>
+
+
+    <script>
+        const textColor = document.getElementById('textColor');
+        const bgColor = document.getElementById('bgColor');
+        const fontSize = document.getElementById('fontSize');
+        const fontWeight = document.getElementById('fontWeight');
+        const preview = document.getElementById('preview');
+        const cssCode = document.getElementById('cssCode');
+
+        // Contraste
+        const contrastRatioEl = document.getElementById('contrastRatio');
+        const aaBadge = document.getElementById('aaBadge');
+        const aaaBadge = document.getElementById('aaaBadge');
+        const contrastDesc = document.getElementById('contrastDesc');
+
+        // Utilidades de color
+        function hexToRgb(hex) {
+            let c = hex.replace('#', '');
+            if (c.length === 3) c = c[0] + c[0] + c[1] + c[1] + c[2] + c[2];
+            const num = parseInt(c, 16);
+            return [
+                (num >> 16) & 255,
+                (num >> 8) & 255,
+                num & 255
+            ];
+        }
+
+        function luminance([r, g, b]) {
+            // sRGB
+            const a = [r, g, b].map(function (v) {
+                v = v / 255;
+                return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+            });
+            return 0.2126 * a[0] + 0.7152 * a[1] + 0.0722 * a[2];
+        }
+
+        function getContrastRatio(hex1, hex2) {
+            const lum1 = luminance(hexToRgb(hex1));
+            const lum2 = luminance(hexToRgb(hex2));
+            const brightest = Math.max(lum1, lum2);
+            const darkest = Math.min(lum1, lum2);
+            return ((brightest + 0.05) / (darkest + 0.05));
+        }
+
+        function updateContrastChecker() {
+            const fg = textColor.value;
+            const bg = bgColor.value;
+            const ratio = getContrastRatio(fg, bg);
+            const ratioStr = ratio.toFixed(2) + ':1';
+            contrastRatioEl.textContent = ratioStr;
+
+            // WCAG thresholds
+            // AA: >= 4.5 para texto normal, >= 3.0 para grande (>=24px bold o >=18.66px normal)
+            // AAA: >= 7.0 para texto normal, >= 4.5 para grande
+            let isLarge = false;
+            let px = parseFloat(fontSize.value);
+            let weight = fontWeight.value;
+            if (weight === 'bold' && px >= 18.66) isLarge = true;
+            else if (px >= 24) isLarge = true;
+
+            // AA
+            let aaPass = false, aaaPass = false;
+            if (isLarge) {
+                aaPass = ratio >= 3.0;
+                aaaPass = ratio >= 4.5;
+            } else {
+                aaPass = ratio >= 4.5;
+                aaaPass = ratio >= 7.0;
+            }
+            aaBadge.className = 'wcag-badge ' + (aaPass ? 'pass' : 'fail');
+            aaaBadge.className = 'wcag-badge ' + (aaaPass ? 'pass' : 'fail');
+
+            // Descripción
+            let desc = '';
+            if (aaPass && aaaPass) desc = 'Cumple AA y AAA para este tamaño de texto.';
+            else if (aaPass) desc = 'Cumple AA, pero no AAA.';
+            else desc = 'No cumple AA ni AAA.';
+            contrastDesc.textContent = desc + (isLarge ? ' (Texto grande)' : ' (Texto normal)');
+        }
+
+        function updatePreview() {
+            // Aplicar estilos SOLO a los <p> y <h2> dentro del preview
+            const previewPs = preview.querySelectorAll('p');
+            previewPs.forEach(p => {
+                p.style.color = textColor.value;
+                p.style.backgroundColor = 'transparent';
+                p.style.fontSize = fontSize.value;
+                p.style.fontWeight = fontWeight.value;
+                p.style.padding = '0';
+                p.style.marginBottom = '0.5em';
+                p.style.borderRadius = '0';
+                p.style.boxShadow = 'none';
+            });
+            // También el h2
+            const previewH2 = preview.querySelector('h2');
+            if (previewH2) {
+                previewH2.style.color = textColor.value;
+                previewH2.style.backgroundColor = 'transparent';
+                previewH2.style.fontSize = fontSize.value;
+                previewH2.style.fontWeight = fontWeight.value === 'lighter' ? 'bold' : fontWeight.value;
+                previewH2.style.padding = '0';
+                previewH2.style.borderRadius = '0';
+                previewH2.style.boxShadow = 'none';
+            }
+            // Cambiar solo el fondo del contenedor preview
+            preview.style.setProperty('background', bgColor.value, 'important');
+            preview.style.setProperty('backgroundColor', bgColor.value, 'important');
+            // Generar código CSS
+            const code =
+                `p {\n    color: ${textColor.value};\n    background-color: ${bgColor.value};\n    font-size: ${fontSize.value};\n    font-weight: ${fontWeight.value};\n}`;
+            cssCode.textContent = code;
+            updateContrastChecker();
+        }
+
+        function copyCode() {
+            navigator.clipboard.writeText(cssCode.textContent.trim());
+
+            const btn = document.querySelector('.copy-btn');
+            const original = btn.innerHTML;
+            btn.innerHTML = 'Copiado';
+
+            setTimeout(() => {
+                btn.innerHTML = original;
+            }, 1900);
+        }
+
+        // Escuchar cambios
+        textColor.addEventListener('input', updatePreview);
+        bgColor.addEventListener('input', updatePreview);
+        fontSize.addEventListener('change', updatePreview);
+        fontWeight.addEventListener('change', updatePreview);
+
+        // Inicializar
+        updatePreview();
+    </script>
+</body>
+
+</html>
