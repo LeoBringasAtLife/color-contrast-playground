@@ -7,15 +7,25 @@
     <title>Vista Previa y Contraste</title>
 
     <style>
+        *,
+        *::after,
+        *::before {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, Helvetica, sans-serif;
             background-color: #e0e7ff;
             min-height: 100vh;
             margin: 0;
+            overflow-x: hidden;
         }
 
         .container {
-            max-width: 820px;
+            max-width: 850px;
+            width: 100%;
             margin: 40px auto 0 auto;
             padding: 32px 28px 32px 28px;
         }
@@ -176,6 +186,7 @@
         }
 
         .code-output {
+            width: 100%;
             background: #f2f5f9;
             color: #18181b;
             padding: 18px 20px 18px 20px;
@@ -185,6 +196,7 @@
             font-size: 1.55em;
             position: relative;
             margin-bottom: 0;
+            box-sizing: border-box;
         }
 
         .code-output .copy-btn {
@@ -214,28 +226,54 @@
             color: inherit;
         }
 
-        /* @media (max-width: 700px) {
-            .container {
-                padding: 10px 2vw;
+        @media (max-width: 480px) {
+            .controls {
+                gap: 16px;
+                padding: 16px;
+                flex-direction: column;
             }
 
             .controls {
                 flex-direction: column;
-                gap: 18px;
-                padding: 16px 8px 10px 8px;
+                gap: 16px;
+                padding: 16px 12px;
+            }
+
+            .control-group {
+                min-width: 100%;
             }
 
             .preview {
-                padding: 18px 8px 18px 8px;
+                padding: 16px 12px;
+                font-size: 1.1rem;
+            }
+
+            .preview h2 {
+                font-size: 1.2rem;
             }
 
             .contrast-checker {
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 8px;
-                padding: 10px 6px;
+                padding: 12px 10px;
+                font-size: 0.95rem;
             }
-        } */
+
+            .contrast-info,
+            .contrast-wcag {
+                gap: 8px;
+            }
+
+            .code-output {
+                font-size: 1.2rem;
+            }
+
+            .copy-btn {
+                padding: 10px 18px;
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 
@@ -245,22 +283,18 @@
         <div class="controls">
             <div class="control-group">
                 <label for="textColor">Color del texto:</label>
-                <input type="color" id="textColor" value="#292222">
+                <input type="color" id="textColor" value="#000000">
                 <label for="fontSize">Tamaño de fuente:</label>
                 <select id="fontSize">
                     <option value="14px">14px</option>
                     <option value="16px">16px</option>
-                    <option value="18px" selected>18px</option>
-                    <option value="24px">24px</option>
-                    <option value="35px">35px</option>
-                    <option value="45px">45px</option>
-                    <option value="55px">55px</option>
-                    <option value="65px">65px</option>
+                    <option value="18px">18px</option>
+                    <option value="24px" selected>24px</option>
                 </select>
             </div>
             <div class="control-group">
                 <label for="bgColor">Color de fondo:</label>
-                <input type="color" id="bgColor" value="#F8FAFC">
+                <input type="color" id="bgColor" value="#949494">
                 <label for="fontWeight">Peso de fuente:</label>
                 <select id="fontWeight">
                     <option value="normal">Normal</option>
@@ -272,10 +306,8 @@
 
         <div class="preview" id="preview">
             <h2>¡Bienvenidos al modo creativo!</h2>
+            <br>
             <p>Modifica el diseño y observa cómo esta vista previa se adapta al instante.</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id delectus harum commodi quibusdam quam
-                dolorum quasi quidem libero! Sed doloremque sit explicabo unde recusandae commodi facilis eius nobis
-                tenetur cum?</p>
         </div>
         <div class="contrast-checker" id="contrastChecker">
             <div class="contrast-info">
