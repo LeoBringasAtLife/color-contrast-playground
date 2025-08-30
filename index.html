@@ -5,12 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comprobador de contraste de color</title>
-    <link rel="shortcut icon" href="imagenes/palette.ico" type="image/x-icon">
-
+    <link rel="icon" href="imagenes/favicon.png" type="image/png">
     <style>
-        *,
-        *::after,
-        *::before {
+        html,body,div,input,select,button,span,a,h1,h2,p,pre {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -20,15 +17,14 @@
             font-family: Arial, Helvetica, sans-serif;
             background-color: #e0e7ff;
             min-height: 100vh;
-            margin: 0;
             overflow-x: hidden;
             user-select: none;
         }
 
         .github-badge-container {
             position: fixed;
-            top: 16px;
-            right: 16px;
+            top: 1rem;
+            right: 1rem;
             display: flex;
             z-index: 1000;
         }
@@ -40,21 +36,20 @@
 
         .github-badge-icon {
             display: flex;
-            height: 32px;
-            width: 32px;
+            height: 2rem;
+            width: 2rem;
             align-items: center;
             justify-content: center;
-            /* border-radius: 6px; */
             border: 1px solid #d1d5db;
             background: #fff;
         }
 
         .github-badge-arrow {
-            width: 16px;
-            border-top: 8px solid transparent;
-            border-bottom: 8px solid transparent;
+            width: 1rem;
+            border-top: 0.5rem solid transparent;
+            border-bottom: 0.5rem solid transparent;
             border-left: 0;
-            border-right: 8px solid #f3f4f6;
+            border-right: 0.5rem solid #f3f4f6;
             transition: border-right-color 0.2s;
         }
 
@@ -66,9 +61,8 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            height: 32px;
+            height: 2rem;
             align-items: center;
-            /* border-radius: 6px; */
             background: #f3f4f6;
             padding: 0 1rem;
             font-size: 0.96rem;
@@ -98,12 +92,12 @@
 
         .github-badge-link:hover .github-badge-label .fade-out {
             opacity: 0;
-            transform: translateY(-20px);
+            transform: translateY(-1.25rem);
         }
 
         .github-badge-label .fade-in {
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(1.25rem);
         }
 
         .github-badge-link:hover .github-badge-label .fade-in {
@@ -112,7 +106,7 @@
         }
 
         .page-title {
-            margin: 50px 20px 40px;
+            margin: 3.125rem 1.25rem 2.5rem;
             text-align: center;
             color: #23232b;
             user-select: none;
@@ -121,7 +115,7 @@
         .page-title h1 {
             font-size: 2.8rem;
             font-weight: 900;
-            letter-spacing: -1px;
+            letter-spacing: -0.0625rem;
             margin-bottom: 0.3em;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
         }
@@ -135,42 +129,43 @@
         }
 
         .container {
-            max-width: 850px;
+            max-width: 53.125rem;
             width: 100%;
-            margin: 40px auto 0 auto;
-            padding: 32px 28px 32px 28px;
+            margin: 2.5rem auto 0;
+            padding: 2rem 1.75rem;
         }
 
         .controls {
             display: flex;
             flex-wrap: wrap;
-            gap: 32px 40px;
+            gap: 2rem 2.5rem;
             background: #f8fafc;
-            padding: 28px 24px 18px 24px;
+            padding: 1.75rem 1.5rem 1.125rem;
             border: 1.5px solid #c7d2fe;
-            border-radius: 10px;
+            border-radius: 0.625rem;
             font-size: 1.34rem;
         }
 
         .control-group {
             display: flex;
             flex-direction: column;
-            gap: 14px;
-            min-width: 220px;
+            gap: 0.875rem;
+            min-width: 13.75rem;
         }
 
         label {
             font-weight: 600;
             color: #3b3b3b;
-            margin-bottom: 1px;
+            margin-bottom: 0.0625rem;
             letter-spacing: 0.01em;
         }
 
         input,
-        select {
-            font-size: 1.30rem;
+        select,
+        textarea {
+            font-size: 1.3rem;
             border: 1.5px solid #c7d2fe;
-            padding: 8px 12px;
+            padding: 0.5rem 0.75rem;
             background: #f8fafc;
             color: #222;
             outline: none;
@@ -178,27 +173,33 @@
         }
 
         input:focus,
-        select:focus {
+        select:focus,
+        textarea:focus {
             border: 1.9px solid #6366f1;
         }
 
         input[type="color"] {
-            height: 44px;
-            width: 44px;
+            height: 2.75rem;
+            width: 2.75rem;
             padding: 0;
-            border: noen;
+            border: none;
             background: #fff;
             cursor: pointer;
-            margin-bottom: 5px;
+            margin-bottom: 0.3125rem;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 4rem;
+            max-height: 10rem;
         }
 
         .preview {
-            background: linear-gradient(90deg, #f3f6fd 0%, #e0e7ff 100%);
-            padding: 38px 32px 38px 32px;
+            padding: 2.375rem 2rem;
             border: 1.5px solid #c7d2fe;
-            min-height: 110px;
-            margin-top: 20px;
-            border-radius: 10px;
+            min-height: 6.875rem;
+            margin-top: 1.25rem;
+            border-radius: 0.625rem;
         }
 
         .preview h2 {
@@ -212,27 +213,26 @@
         .preview p {
             font-size: 1.25rem;
             color: #121212;
-            margin-bottom: 0.5em;
+            margin-bottom: 0.5rem;
         }
 
         .contrast-checker {
             display: flex;
             align-items: center;
-            gap: 24px;
+            gap: 1.5rem;
             background: #f8fafc;
             border: 1.5px solid #c7d2fe;
-            border-radius: 10px;
-            padding: 18px 22px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            font-size: 18px;
+            border-radius: 0.625rem;
+            padding: 1.125rem 1.375rem;
+            margin: 1.25rem 0;
+            font-size: 1.125rem;
         }
 
         .contrast-info {
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin-right: 18px;
+            gap: 0.625rem;
+            margin-right: 1.125rem;
         }
 
         .contrast-label {
@@ -248,12 +248,12 @@
 
         .contrast-wcag {
             display: flex;
-            gap: 12px;
-            margin-right: 18px;
+            gap: 0.75rem;
+            margin-right: 1.125rem;
         }
 
         .wcag-badge {
-            padding: 4px 14px;
+            padding: 0.25rem 0.875rem;
             font-weight: 700;
             font-size: 1.05em;
             border: 1.5px solid #c7d2fe;
@@ -272,51 +272,52 @@
         }
 
         .contrast-desc {
-            font-size: 1em;
-            color: #666;
-            margin-left: 10px;
+            font-size: 1rem;
+            color: #4b4b4b;
+            /* Improved contrast */
+            margin-left: 0.625rem;
         }
 
         .copy-btn {
             background: #f8fafc;
             color: #121212;
-            padding: 12px 30px;
-            font-size: 1.1em;
+            padding: 0.75rem 1.875rem;
+            font-size: 1.1rem;
             border: 1px solid #c7d2fe;
             cursor: pointer;
             font-weight: 700;
-            margin-bottom: 18px;
+            margin-bottom: 1.125rem;
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: background 0.2s, color 0.2s;
         }
 
-
-        .copy-btn:hover {
-            background-color: #f8fafc;
+        .copy-btn.copied {
+            background: #22c55e;
+            color: #fff;
         }
 
         .code-output {
             width: 100%;
             background: #f2f5f9;
             color: #18181b;
-            padding: 18px 20px 18px 20px;
+            padding: 1.125rem 1.25rem;
             font-family: 'JetBrains Mono', 'Fira Mono', 'Consolas', monospace;
             overflow-x: auto;
-            border-radius: 10px;
-            font-size: 1.55em;
+            border-radius: 0.625rem;
+            font-size: 1.55rem;
             position: relative;
             margin-bottom: 0;
-            box-sizing: border-box;
         }
 
         .code-output .copy-btn {
             position: absolute;
-            top: 14px;
-            right: 18px;
-            padding: 5px 14px;
-            font-size: 0.78em;
-            border-radius: 5px;
+            top: 0.875rem;
+            right: 1.125rem;
+            padding: 0.3125rem 0.875rem;
+            font-size: 0.78rem;
+            border-radius: 0.3125rem;
             background: #23232b;
             color: #fff;
             border: none;
@@ -331,72 +332,27 @@
             opacity: 1;
         }
 
+        .code-output .copy-btn.copied {
+            background: #22c55e;
+            color: #fff;
+            opacity: 1;
+        }
+
         .code-output pre {
             margin: 0;
             background: none;
             color: inherit;
         }
 
-        @media (max-width: 480px) {
-            .controls {
-                gap: 16px;
-                padding: 16px;
-                flex-direction: column;
-            }
-
-            .controls {
-                flex-direction: column;
-                gap: 16px;
-                padding: 16px 12px;
-            }
-
-            .control-group {
-                min-width: 100%;
-            }
-
-            .preview {
-                padding: 16px 12px;
-                font-size: 1.1rem;
-            }
-
-            .preview h2 {
-                font-size: 1.2rem;
-            }
-
-            .contrast-checker {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 8px;
-                padding: 12px 10px;
-                font-size: 0.95rem;
-            }
-
-            .contrast-info,
-            .contrast-wcag {
-                gap: 8px;
-            }
-
-            .code-output {
-                font-size: 1.2rem;
-            }
-
-            .copy-btn {
-                padding: 10px 18px;
-                font-size: 1rem;
-            }
-        }
-
-        /* ======= RESPONSIVE ======= */
-
-        /* Tablets y pantallas medianas */
+        /* Responsive */
         @media (max-width: 768px) {
             .container {
-                padding: 20px;
+                padding: 1.25rem;
             }
 
             .controls {
-                gap: 20px;
-                padding: 20px;
+                gap: 1.25rem;
+                padding: 1.25rem;
             }
 
             .code-output {
@@ -409,18 +365,17 @@
             }
 
             .social-btn {
-                min-width: 180px;
-                font-size: 15px;
+                min-width: 11.25rem;
+                font-size: 0.9375rem;
                 padding: 0.5rem 1rem;
             }
         }
 
-        /* Móviles */
         @media (max-width: 480px) {
             .controls {
                 flex-direction: column;
-                gap: 16px;
-                padding: 16px 12px;
+                gap: 1rem;
+                padding: 1rem 0.75rem;
             }
 
             .control-group {
@@ -428,7 +383,7 @@
             }
 
             .preview {
-                padding: 16px 12px;
+                padding: 1rem 0.75rem;
                 font-size: 1.1rem;
             }
 
@@ -439,14 +394,14 @@
             .contrast-checker {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 8px;
-                padding: 12px 10px;
+                gap: 0.5rem;
+                padding: 0.75rem 0.625rem;
                 font-size: 0.95rem;
             }
 
             .contrast-info,
             .contrast-wcag {
-                gap: 8px;
+                gap: 0.5rem;
             }
 
             .code-output {
@@ -454,25 +409,24 @@
             }
 
             .copy-btn {
-                padding: 10px 18px;
+                padding: 0.625rem 1.125rem;
                 font-size: 1rem;
             }
 
             footer.social-footer {
                 flex-direction: column;
                 align-items: center;
-                gap: 10px;
+                gap: 0.625rem;
             }
 
             .social-btn {
                 width: 80%;
                 justify-content: center;
-                font-size: 14px;
-                padding: 10px;
+                font-size: 0.875rem;
+                padding: 0.625rem;
             }
         }
 
-        /* Footer de enlaces sociales */
         footer.social-footer {
             display: flex;
             flex-wrap: nowrap;
@@ -480,7 +434,7 @@
             align-items: center;
             justify-content: center;
             margin: 2rem;
-            padding: 20px;
+            padding: 1.25rem;
             flex-direction: row;
         }
 
@@ -495,19 +449,18 @@
             text-decoration: none;
             color: #121212;
             gap: 0.5rem;
-            min-width: 220px;
-            border-radius: 12px;
+            min-width: 13.75rem;
+            border-radius: 0.75rem;
             transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
         }
 
         .social-btn svg {
-            width: 1.5em;
-            height: 1.5em;
-            margin-right: 0.5em;
+            width: 1.5rem;
+            height: 1.5rem;
+            margin-right: 0.5rem;
             flex-shrink: 0;
         }
 
-        /* Colores y hover por plataforma */
         .youtube-btn {
             border-color: #c4302b;
         }
@@ -517,7 +470,6 @@
         }
 
         .twitch-btn {
-            /* ahora LinkedIn */
             border-color: #0A66C2;
         }
 
@@ -526,7 +478,6 @@
         }
 
         .discord-btn {
-            /* ahora GitHub */
             border-color: #181717;
             color: #181717;
         }
@@ -542,41 +493,22 @@
         .x-btn:hover {
             background: #d3d3d3;
         }
-
-        /* Responsivo para móviles */
-        @media (max-width: 480px) {
-            footer.social-footer {
-                flex-direction: column;
-                align-items: center;
-                gap: 10px;
-            }
-
-            .social-btn {
-                width: 80%;
-                justify-content: center;
-                font-size: 14px;
-                padding: 10px;
-            }
-        }
     </style>
 </head>
 
 <body>
     <div class="github-badge-container">
-        <a class="github-badge-link" href="https://github.com/LeoBringasAtLife/color-contrast-playground.git" target="_blank"
-            rel="noopener noreferrer">
+        <a class="github-badge-link" href="https://github.com/LeoBringasAtLife/color-contrast-playground.git"
+            target="_blank" rel="noopener noreferrer">
             <div class="github-badge-icon">
-                <!-- GitHub Icon -->
-                <svg fill="#121212" viewBox="0 0 24 24" style="height:20px;width:20px;">
+                <svg fill="#121212" viewBox="0 0 24 24" style="height:1.25rem;width:1.25rem;">
                     <path
                         d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z">
                     </path>
                 </svg>
             </div>
             <div style="display:flex;align-items:center;">
-                <!-- Flecha -->
                 <div class="github-badge-arrow"></div>
-                <!-- Badge -->
                 <div class="github-badge-label">
                     <span class="fade-out">145⭐️ en GitHub</span>
                     <span class="fade-in">¡Deja tu estrella!</span>
@@ -591,13 +523,12 @@
     </div>
 
     <div class="container">
-
         <div class="controls">
             <div class="control-group">
                 <label for="textColor">Color del texto:</label>
-                <input type="color" id="textColor" value="#FFFF00">
+                <input type="color" id="textColor" value="#FFFF00" aria-label="Seleccionar color del texto">
                 <label for="fontSize">Tamaño de fuente:</label>
-                <select id="fontSize">
+                <select id="fontSize" aria-label="Seleccionar tamaño de fuente">
                     <option value="14px">14px</option>
                     <option value="16px">16px</option>
                     <option value="18px">18px</option>
@@ -606,19 +537,31 @@
             </div>
             <div class="control-group">
                 <label for="bgColor">Color de fondo:</label>
-                <input type="color" id="bgColor" value="#000000">
+                <input type="color" id="bgColor" value="#000000" aria-label="Seleccionar color de fondo">
                 <label for="fontWeight">Peso de fuente:</label>
-                <select id="fontWeight">
-                    <option value="normal" selected >Normal</option>
+                <select id="fontWeight" aria-label="Seleccionar peso de fuente">
+                    <option value="normal" selected>Normal</option>
                     <option value="bold">Bold</option>
                     <option value="lighter">Light</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="previewText">Texto de vista previa:</label>
+                <textarea id="previewText"
+                    aria-label="Ingresar texto de vista previa">Modifica el diseño y observa cómo esta vista previa se adapta al instante.</textarea>
+                <label for="cssSelector">Selector CSS:</label>
+                <select id="cssSelector" aria-label="Seleccionar selector CSS para el código generado">
+                    <option value="p" selected>Párrafo (p)</option>
+                    <option value="h1">Encabezado 1 (h1)</option>
+                    <option value="h2">Encabezado 2 (h2)</option>
+                    <option value="div">Div</option>
+                    <option value=".custom-class">Clase personalizada (.custom-class)</option>
                 </select>
             </div>
         </div>
 
         <div class="preview" id="preview">
             <h2>¡Bienvenidos al modo creativo!</h2>
-            <br>
             <p>Modifica el diseño y observa cómo esta vista previa se adapta al instante.</p>
         </div>
         <div class="contrast-checker" id="contrastChecker">
@@ -634,21 +577,12 @@
         </div>
 
         <div class="code-output">
-            <button class="copy-btn" onclick="copyCode()">
-                Copiar CSS
-            </button>
+            <button class="copy-btn" onclick="copyCode()" aria-label="Copiar código CSS">Copiar CSS</button>
             <pre id="cssCode"></pre>
         </div>
     </div>
 
-    ...
-    <script>
-        // Tu código JS existente
-    </script>
-
-    <!-- Enlaces personalizados al final -->
     <footer class="social-footer">
-        <!-- YouTube -->
         <a target="_blank" rel="noopener" href="https://www.youtube.com/@LeooBringasAtLife"
             class="social-btn youtube-btn">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="red">
@@ -657,7 +591,6 @@
             </svg>
             Sígueme en YouTube
         </a>
-        <!-- GitHub -->
         <a href="https://github.com/LeoBringasAtLife" target="_blank" rel="noopener" class="social-btn discord-btn">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#181717">
                 <path
@@ -665,15 +598,14 @@
             </svg>
             Sígueme en GitHub
         </a>
-        <!-- LinkedIn -->
-        <a href="https://www.linkedin.com/in/leonardo-bringas-32b995353/?originalSubdomain=ar" target="_blank" rel="noopener" class="social-btn twitch-btn">
+        <a href="https://www.linkedin.com/in/leonardo-bringas-32b995353/?originalSubdomain=ar" target="_blank"
+            rel="noopener" class="social-btn twitch-btn">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#0A66C2">
                 <path
                     d="M22.225 0H1.771C.792 0 0 .774 0 1.728v20.544C0 23.226.792 24 1.771 24h20.451C23.208 24 24 23.226 24 22.272V1.728C24 .774 23.208 0 22.225 0ZM7.125 20.452H3.556V9h3.569v11.452ZM5.341 7.578c-1.146 0-2.073-.931-2.073-2.077a2.073 2.073 0 1 1 4.147 0c0 1.146-.926 2.077-2.074 2.077ZM20.452 20.452h-3.569v-5.604c0-1.336-.025-3.058-1.862-3.058-1.863 0-2.149 1.455-2.149 2.957v5.705h-3.569V9h3.429v1.561h.049c.478-.905 1.642-1.862 3.377-1.862 3.608 0 4.275 2.375 4.275 5.464v6.289Z" />
             </svg>
             Sígueme en LinkedIn
         </a>
-        <!-- X (Twitter) ya existente -->
         <a href="https://x.com/notleoobringas" target="_blank" rel="noopener" class="social-btn x-btn">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path
@@ -684,16 +616,15 @@
         </a>
     </footer>
 
-
     <script>
         const textColor = document.getElementById('textColor');
         const bgColor = document.getElementById('bgColor');
         const fontSize = document.getElementById('fontSize');
         const fontWeight = document.getElementById('fontWeight');
+        const previewText = document.getElementById('previewText');
+        const cssSelector = document.getElementById('cssSelector');
         const preview = document.getElementById('preview');
         const cssCode = document.getElementById('cssCode');
-
-        // Contraste
         const contrastRatioEl = document.getElementById('contrastRatio');
         const aaBadge = document.getElementById('aaBadge');
         const aaaBadge = document.getElementById('aaaBadge');
@@ -701,6 +632,9 @@
 
         // Utilidades de color
         function hexToRgb(hex) {
+            if (!/^#[0-9A-Fa-f]{3,6}$/.test(hex)) {
+                throw new Error('Color hexadecimal inválido');
+            }
             let c = hex.replace('#', '');
             if (c.length === 3) c = c[0] + c[0] + c[1] + c[1] + c[2] + c[2];
             const num = parseInt(c, 16);
@@ -712,8 +646,7 @@
         }
 
         function luminance([r, g, b]) {
-            // sRGB
-            const a = [r, g, b].map(function (v) {
+            const a = [r, g, b].map(v => {
                 v = v / 255;
                 return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
             });
@@ -725,96 +658,107 @@
             const lum2 = luminance(hexToRgb(hex2));
             const brightest = Math.max(lum1, lum2);
             const darkest = Math.min(lum1, lum2);
-            return ((brightest + 0.05) / (darkest + 0.05));
+            return (brightest + 0.05) / (darkest + 0.05);
         }
 
         function updateContrastChecker() {
-            const fg = textColor.value;
-            const bg = bgColor.value;
-            const ratio = getContrastRatio(fg, bg);
-            const ratioStr = ratio.toFixed(2) + ':1';
-            contrastRatioEl.textContent = ratioStr;
+            try {
+                const fg = textColor.value;
+                const bg = bgColor.value;
+                const ratio = getContrastRatio(fg, bg);
+                const ratioStr = ratio.toFixed(2) + ':1';
+                contrastRatioEl.textContent = ratioStr;
 
-            // WCAG thresholds
-            // AA: >= 4.5 para texto normal, >= 3.0 para grande (>=24px bold o >=18.66px normal)
-            // AAA: >= 7.0 para texto normal, >= 4.5 para grande
-            let isLarge = false;
-            let px = parseFloat(fontSize.value);
-            let weight = fontWeight.value;
-            if (weight === 'bold' && px >= 18.66) isLarge = true;
-            else if (px >= 24) isLarge = true;
+                let isLarge = false;
+                let px = parseFloat(fontSize.value);
+                let weight = fontWeight.value;
+                if (weight === 'bold' && px >= 18.66) isLarge = true;
+                else if (px >= 24) isLarge = true;
 
-            // AA
-            let aaPass = false, aaaPass = false;
-            if (isLarge) {
-                aaPass = ratio >= 3.0;
-                aaaPass = ratio >= 4.5;
-            } else {
-                aaPass = ratio >= 4.5;
-                aaaPass = ratio >= 7.0;
+                let aaPass = isLarge ? ratio >= 3.0 : ratio >= 4.5;
+                let aaaPass = isLarge ? ratio >= 4.5 : ratio >= 7.0;
+                aaBadge.className = 'wcag-badge ' + (aaPass ? 'pass' : 'fail');
+                aaaBadge.className = 'wcag-badge ' + (aaaPass ? 'pass' : 'fail');
+
+                let desc = '';
+                if (aaPass && aaaPass) desc = 'Cumple AA y AAA para este tamaño de texto.';
+                else if (aaPass) desc = 'Cumple AA, pero no AAA.';
+                else desc = 'No cumple AA ni AAA.';
+                contrastDesc.textContent = desc + (isLarge ? ' (Texto grande)' : ' (Texto normal)');
+            } catch (error) {
+                console.error('Error al calcular contraste:', error);
+                contrastRatioEl.textContent = 'Error';
+                contrastDesc.textContent = 'Error al calcular contraste. Verifica los colores.';
             }
-            aaBadge.className = 'wcag-badge ' + (aaPass ? 'pass' : 'fail');
-            aaaBadge.className = 'wcag-badge ' + (aaaPass ? 'pass' : 'fail');
+        }
 
-            // Descripción
-            let desc = '';
-            if (aaPass && aaaPass) desc = 'Cumple AA y AAA para este tamaño de texto.';
-            else if (aaPass) desc = 'Cumple AA, pero no AAA.';
-            else desc = 'No cumple AA ni AAA.';
-            contrastDesc.textContent = desc + (isLarge ? ' (Texto grande)' : ' (Texto normal)');
+        function applyStyles(element, isH2 = false) {
+            element.style.color = textColor.value;
+            element.style.backgroundColor = 'transparent';
+            element.style.fontSize = fontSize.value;
+            element.style.fontWeight = isH2 && fontWeight.value === 'lighter' ? 'bold' : fontWeight.value;
+            element.style.padding = '0';
+            element.style.marginBottom = isH2 ? '0' : '0.5rem';
+            element.style.borderRadius = '0';
+            element.style.boxShadow = 'none';
         }
 
         function updatePreview() {
-            // Aplicar estilos SOLO a los <p> y <h2> dentro del preview
-            const previewPs = preview.querySelectorAll('p');
-            previewPs.forEach(p => {
-                p.style.color = textColor.value;
-                p.style.backgroundColor = 'transparent';
-                p.style.fontSize = fontSize.value;
-                p.style.fontWeight = fontWeight.value;
-                p.style.padding = '0';
-                p.style.marginBottom = '0.5em';
-                p.style.borderRadius = '0';
-                p.style.boxShadow = 'none';
-            });
-            // También el h2
-            const previewH2 = preview.querySelector('h2');
-            if (previewH2) {
-                previewH2.style.color = textColor.value;
-                previewH2.style.backgroundColor = 'transparent';
-                previewH2.style.fontSize = fontSize.value;
-                previewH2.style.fontWeight = fontWeight.value === 'lighter' ? 'bold' : fontWeight.value;
-                previewH2.style.padding = '0';
-                previewH2.style.borderRadius = '0';
-                previewH2.style.boxShadow = 'none';
+            try {
+                // Actualizar texto del preview
+                const previewP = preview.querySelector('p');
+                if (previewP) previewP.textContent = previewText.value || 'Modifica el diseño y observa cómo esta vista previa se adapta al instante.';
+
+                // Aplicar estilos
+                preview.querySelectorAll('p').forEach(p => applyStyles(p));
+                const previewH2 = preview.querySelector('h2');
+                if (previewH2) applyStyles(previewH2, true);
+
+                // Cambiar fondo del contenedor preview
+                preview.style.background = bgColor.value;
+
+                // Generar código CSS
+                const selector = cssSelector.value;
+                const code = `${selector} {\n    color: ${textColor.value};\n    background-color: ${bgColor.value};\n    font-size: ${fontSize.value};\n    font-weight: ${fontWeight.value};\n}`;
+                cssCode.textContent = code;
+
+                updateContrastChecker();
+            } catch (error) {
+                console.error('Error al actualizar vista previa:', error);
             }
-            // Cambiar solo el fondo del contenedor preview
-            preview.style.setProperty('background', bgColor.value, 'important');
-            preview.style.setProperty('backgroundColor', bgColor.value, 'important');
-            // Generar código CSS
-            const code =
-                `p {\n    color: ${textColor.value};\n    background-color: ${bgColor.value};\n    font-size: ${fontSize.value};\n    font-weight: ${fontWeight.value};\n}`;
-            cssCode.textContent = code;
-            updateContrastChecker();
         }
 
         function copyCode() {
-            navigator.clipboard.writeText(cssCode.textContent.trim());
+            try {
+                navigator.clipboard.writeText(cssCode.textContent.trim());
+                const btn = document.querySelector('.code-output .copy-btn');
+                const original = btn.innerHTML;
+                btn.innerHTML = 'Copiado';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.classList.remove('copied');
+                    btn.innerHTML = original;
+                }, 1900);
+            } catch (error) {
+                console.error('Error al copiar código:', error);
+            }
+        }
 
-            const btn = document.querySelector('.copy-btn');
-            const original = btn.innerHTML;
-            btn.innerHTML = 'Copiado';
-
-            setTimeout(() => {
-                btn.innerHTML = original;
-            }, 1900);
+        function debounce(fn, ms) {
+            let timeout;
+            return function (...args) {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => fn.apply(this, args), ms);
+            };
         }
 
         // Escuchar cambios
-        textColor.addEventListener('input', updatePreview);
-        bgColor.addEventListener('input', updatePreview);
+        textColor.addEventListener('input', debounce(updatePreview, 100));
+        bgColor.addEventListener('input', debounce(updatePreview, 100));
         fontSize.addEventListener('change', updatePreview);
         fontWeight.addEventListener('change', updatePreview);
+        previewText.addEventListener('input', debounce(updatePreview, 100));
+        cssSelector.addEventListener('change', updatePreview);
 
         // Inicializar
         updatePreview();
