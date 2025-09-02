@@ -7,7 +7,8 @@
     <title>Comprobador de contraste de color</title>
     <link rel="icon" href="imagenes/favicon.png" type="image/png">
     <style>
-        <<<<<<< HEAD html,
+        /* Reset y base */
+        html,
         body,
         div,
         input,
@@ -19,529 +20,552 @@
         h2,
         p,
         pre {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-            =======html,
-            body,
-            div,
-            input,
-            select,
-            button,
-            span,
-            a,
-            h1,
-            h2,
-            p,
-            pre {
-                >>>>>>>1aa45a5e20abf2e89e064d22e147758d56721a99 margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #e0e7ff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            user-select: none;
+        }
 
-            body {
-                font-family: Arial, Helvetica, sans-serif;
-                background-color: #e0e7ff;
-                min-height: 100vh;
-                overflow-x: hidden;
-                user-select: none;
-            }
+        /* Layout */
+        .parent-container {
+            position: relative;
+        }
 
-            .github-badge-container {
-                position: fixed;
-                top: 1rem;
-                right: 1rem;
-                display: flex;
-                z-index: 1000;
-            }
+        .container {
+            max-width: 53.125rem;
+            width: 100%;
+            margin: 2.5rem auto 0;
+            padding: 2rem 1.75rem;
+        }
 
-            .github-badge-link {
-                display: flex;
-                text-decoration: none;
-            }
+        /* Components - GitHub Badge */
+        .github-badge-container {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            z-index: 1000;
+            margin: 0;
+        }
 
-            .github-badge-icon {
-                display: flex;
-                height: 2rem;
-                width: 2rem;
-                align-items: center;
-                justify-content: center;
-                border: 1px solid #d1d5db;
-                background: #fff;
-            }
+        .github-badge-link {
+            display: flex;
+            text-decoration: none;
+        }
 
-            .github-badge-arrow {
-                width: 1rem;
-                border-top: 0.5rem solid transparent;
-                border-bottom: 0.5rem solid transparent;
-                border-left: 0;
-                border-right: 0.5rem solid #f3f4f6;
-                transition: border-right-color 0.2s;
-            }
+        .github-badge-icon {
+            display: flex;
+            height: 2rem;
+            width: 2rem;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #d1d5db;
+            background: #fff;
+        }
 
-            .github-badge-link:hover .github-badge-arrow {
-                border-right-color: #fde68a;
-            }
+        .github-badge-arrow {
+            width: 1rem;
+            border-top: 0.5rem solid transparent;
+            border-bottom: 0.5rem solid transparent;
+            border-left: 0;
+            border-right: 0.5rem solid #f3f4f6;
+            transition: border-right-color 0.2s;
+        }
 
-            .github-badge-label {
-                overflow: hidden;
-                display: flex;
-                flex-direction: column;
-                height: 2rem;
-                align-items: center;
-                background: #f3f4f6;
-                padding: 0 1rem;
-                font-size: 0.96rem;
-                justify-content: center;
-                transition: background 0.2s;
-                width: 9rem;
-                position: relative;
-            }
+        .github-badge-link:hover .github-badge-arrow {
+            border-right-color: #fde68a;
+        }
 
-            .github-badge-link:hover .github-badge-label {
-                background: #fde68a;
-            }
+        .github-badge-label {
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 2rem;
+            align-items: center;
+            background: #f3f4f6;
+            padding: 0 1rem;
+            font-size: 0.96rem;
+            justify-content: center;
+            transition: background 0.2s;
+            width: 9rem;
+            position: relative;
+        }
 
-            .github-badge-label span {
-                position: absolute;
-                left: 0;
-                right: 0;
-                text-align: center;
-                transition: opacity 0.2s, transform 0.2s;
-                color: #121212;
-            }
+        .github-badge-link:hover .github-badge-label {
+            background: #fde68a;
+        }
 
-            .github-badge-label .fade-out {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .github-badge-label span {
+            position: absolute;
+            left: 0;
+            right: 0;
+            text-align: center;
+            transition: opacity 0.2s, transform 0.2s;
+            color: #121212;
+        }
 
-            .github-badge-link:hover .github-badge-label .fade-out {
-                opacity: 0;
-                transform: translateY(-1.25rem);
-            }
+        .github-badge-label .fade-out {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-            .github-badge-label .fade-in {
-                opacity: 0;
-                transform: translateY(1.25rem);
-            }
+        .github-badge-link:hover .github-badge-label .fade-out {
+            opacity: 0;
+            transform: translateY(-1.25rem);
+        }
 
-            .github-badge-link:hover .github-badge-label .fade-in {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .github-badge-label .fade-in {
+            opacity: 0;
+            transform: translateY(1.25rem);
+        }
 
-            .page-title {
-                margin: 3.125rem 1.25rem 2.5rem;
-                text-align: center;
-                color: #23232b;
-                user-select: none;
-            }
+        .github-badge-link:hover .github-badge-label .fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-            .page-title h1 {
-                font-size: 2.8rem;
-                font-weight: 900;
-                letter-spacing: -0.0625rem;
-                margin-bottom: 0.3em;
-                text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
-            }
+        /* Components - Page Title */
+        .page-title {
+            margin: 3.125rem 1.25rem 2.5rem;
+            text-align: center;
+            color: #23232b;
+            user-select: none;
+        }
 
-            .page-title div {
-                font-size: 1.2rem;
-                font-weight: 500;
-                color: #374151;
-                margin-top: 0.5em;
-                user-select: none;
-            }
+        .page-title h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            letter-spacing: -0.0625rem;
+            margin-bottom: 0.3em;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+        }
 
+        .page-title div {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #374151;
+            margin-top: 0.5em;
+            user-select: none;
+        }
+
+        /* Components - Controls */
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem 2.5rem;
+            background: #f8fafc;
+            padding: 1.75rem 1.5rem 1.125rem;
+            border: 1.5px solid #c7d2fe;
+            border-radius: 0.625rem;
+            font-size: 1.34rem;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.875rem;
+            min-width: 13.75rem;
+        }
+
+        label {
+            font-weight: 600;
+            color: #3b3b3b;
+            margin-bottom: 0.0625rem;
+            letter-spacing: 0.01em;
+        }
+
+        input,
+        select,
+        textarea {
+            font-size: 1.2rem;
+            border: 1.5px solid #c7d2fe;
+            padding: 0.5rem 0.75rem;
+            background: #f8fafc;
+            color: #222;
+            outline: none;
+            transition: border 0.2s;
+            width: 100%;
+            max-width: 100%;
+            border-radius: 0.375rem;
+            box-sizing: border-box;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border: 1.9px solid #6366f1;
+        }
+
+        input[type="color"] {
+            height: 2.75rem;
+            width: 2.75rem;
+            padding: 0;
+            border: none;
+            background: #fff;
+            cursor: pointer;
+            margin-bottom: 0.3125rem;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 4rem;
+            max-height: 10rem;
+        }
+
+        /* Components - Preview */
+        .preview {
+            padding: 2.375rem 2rem;
+            border: 1.5px solid #c7d2fe;
+            min-height: 6.875rem;
+            margin-top: 1.25rem;
+            border-radius: 0.625rem;
+            transition: color 0.3s, background-color 0.3s;
+        }
+
+        .preview h2 {
+            margin-top: 0;
+            font-size: 1.25rem;
+            color: #6366f1;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+        }
+
+        .preview p {
+            font-size: 1.25rem;
+            color: #121212;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Components - Contrast Checker */
+        .contrast-checker {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            background: #f8fafc;
+            border: 1.5px solid #c7d2fe;
+            border-radius: 0.625rem;
+            padding: 1.125rem 1.375rem;
+            margin: 1.25rem 0;
+            font-size: 1.125rem;
+        }
+
+        .contrast-info {
+            display: flex;
+            align-items: center;
+            gap: 0.625rem;
+            margin-right: 1.125rem;
+        }
+
+        .contrast-label {
+            font-weight: 700;
+            color: #6366f1;
+        }
+
+        .contrast-ratio {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.25em;
+            color: #222;
+        }
+
+        .contrast-wcag {
+            display: flex;
+            gap: 0.75rem;
+            margin-right: 1.125rem;
+        }
+
+        .wcag-badge {
+            padding: 0.25rem 0.875rem;
+            font-weight: 700;
+            font-size: 1.05em;
+            border: 1.5px solid #c7d2fe;
+        }
+
+        .wcag-badge.pass {
+            background: #bbf7d0;
+            color: #15803d;
+            border: 1.5px solid #22c55e;
+        }
+
+        .wcag-badge.fail {
+            background: #fee2e2;
+            color: #b91c1c;
+            border: 1.5px solid #ef4444;
+        }
+
+        .contrast-desc {
+            font-size: 1rem;
+            color: #4b4b4b;
+            margin-left: 0.625rem;
+        }
+
+        /* Components - Buttons */
+        .copy-btn {
+            background: #f8fafc;
+            color: #121212;
+            padding: 0.75rem 1.875rem;
+            font-size: 1.1rem;
+            border: 1px solid #c7d2fe;
+            cursor: pointer;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, color 0.2s;
+            margin-bottom: 0.5rem;
+        }
+
+        .copy-btn:focus-visible {
+            outline: 2px solid #6366f1;
+            outline-offset: 2px;
+        }
+
+        .copy-btn.copied {
+            background: #22c55e;
+            color: #fff;
+        }
+
+        .download-btn {
+            background: #6366f1;
+            color: white;
+            padding: 0.75rem 1.875rem;
+            font-size: 1.1rem;
+            border: 1px solid #6366f1;
+            cursor: pointer;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, color 0.2s;
+            margin-bottom: 0.5rem;
+            margin-left: 0.5rem;
+            border-radius: 0.375rem;
+        }
+
+        .download-btn:hover {
+            background: #4f46e5;
+        }
+
+        .download-btn:focus-visible {
+            outline: 2px solid #6366f1;
+            outline-offset: 2px;
+        }
+
+        /* Components - Code Output */
+        .code-output {
+            width: 100%;
+            background: #f2f5f9;
+            color: #18181b;
+            padding: 1.125rem 1.25rem;
+            font-family: 'JetBrains Mono', 'Fira Mono', 'Consolas', monospace;
+            overflow-x: auto;
+            border-radius: 0.625rem;
+            font-size: 1.55rem;
+            position: relative;
+            margin-bottom: 0;
+        }
+
+        .code-output .copy-btn {
+            position: absolute;
+            top: 0.875rem;
+            right: 1.125rem;
+            padding: 0.3125rem 0.875rem;
+            font-size: 0.78rem;
+            border-radius: 0.3125rem;
+            background: #23232b;
+            color: #fff;
+            border: none;
+            box-shadow: 0 1px 4px #0002;
+            opacity: 0.85;
+            z-index: 2;
+            margin-bottom: 0;
+        }
+
+        .code-output .copy-btn:hover {
+            background: #23232bc6;
+            color: #fff;
+            opacity: 1;
+        }
+
+        .code-output .copy-btn.copied {
+            background: #22c55e;
+            color: #fff;
+            opacity: 1;
+        }
+
+        .code-output pre {
+            margin: 0;
+            background: none;
+            color: inherit;
+        }
+
+        /* Components - Social Footer */
+        footer.social-footer {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 1rem;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem;
+            padding: 1.25rem;
+            flex-direction: row;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem 1.5rem;
+            font-weight: 500;
+            text-align: center;
+            border: 1px solid transparent;
+            text-decoration: none;
+            color: #121212;
+            gap: 0.5rem;
+            min-width: 13.75rem;
+            border-radius: 0.75rem;
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+        }
+
+        .social-btn svg {
+            width: 1.5rem;
+            height: 1.5rem;
+            margin-right: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .youtube-btn {
+            border-color: #c4302b;
+        }
+
+        .youtube-btn:hover {
+            background: #ffc8c6;
+        }
+
+        .twitch-btn {
+            border-color: #0A66C2;
+        }
+
+        .twitch-btn:hover {
+            background: #cce0ff;
+        }
+
+        .discord-btn {
+            border-color: #181717;
+            color: #181717;
+        }
+
+        .discord-btn:hover {
+            background: #d3d3d3;
+        }
+
+        .x-btn {
+            border-color: #111;
+        }
+
+        .x-btn:hover {
+            background: #d3d3d3;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
             .container {
-                max-width: 53.125rem;
-                width: 100%;
-                margin: 2.5rem auto 0;
-                padding: 2rem 1.75rem;
+                padding: 1.25rem;
             }
 
             .controls {
-                display: flex;
+                gap: 1.25rem;
+                padding: 1.25rem;
+            }
+
+            .code-output {
+                font-size: 1.3rem;
+            }
+
+            footer.social-footer {
                 flex-wrap: wrap;
-                gap: 2rem 2.5rem;
-                background: #f8fafc;
-                padding: 1.75rem 1.5rem 1.125rem;
-                border: 1.5px solid #c7d2fe;
-                border-radius: 0.625rem;
-                font-size: 1.34rem;
+                gap: 0.75rem;
+            }
+
+            .social-btn {
+                min-width: 11.25rem;
+                font-size: 0.9375rem;
+                padding: 0.5rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .controls {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem 0.75rem;
             }
 
             .control-group {
-                display: flex;
-                flex-direction: column;
-                gap: 0.875rem;
-                min-width: 13.75rem;
+                min-width: 100%;
             }
 
-            label {
-                font-weight: 600;
-                color: #3b3b3b;
-                margin-bottom: 0.0625rem;
-                letter-spacing: 0.01em;
+            .preview {
+                padding: 1rem 0.75rem;
+                font-size: 1.1rem;
+            }
+
+            .preview h2 {
+                font-size: 1.2rem;
+            }
+
+            .contrast-checker {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+                padding: 0.75rem 0.625rem;
+                font-size: 0.95rem;
+            }
+
+            .contrast-info,
+            .contrast-wcag {
+                gap: 0.5rem;
+            }
+
+            .code-output {
+                font-size: 1.1rem;
+            }
+
+            .copy-btn {
+                padding: 0.625rem 1.125rem;
+                font-size: 1rem;
+            }
+
+            footer.social-footer {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.625rem;
+            }
+
+            .social-btn {
+                width: 80%;
+                justify-content: center;
+                font-size: 0.875rem;
+                padding: 0.625rem;
             }
 
             input,
             select,
             textarea {
-                <<<<<<< HEAD font-size: 1.2rem;
-                =======font-size: 1.3rem;
-                >>>>>>>1aa45a5e20abf2e89e064d22e147758d56721a99 border: 1.5px solid #c7d2fe;
-                padding: 0.5rem 0.75rem;
-                background: #f8fafc;
-                color: #222;
-                outline: none;
-                transition: border 0.2s;
-                width: 100%;
-                max-width: 100%;
-                border-radius: 0.375rem;
-                box-sizing: border-box;
-            }
-
-            textarea {
-                resize: vertical;
-                min-height: 4rem;
-                max-height: 10rem;
-            }
-
-
-            input:focus,
-            select:focus,
-            textarea:focus {
-                border: 1.9px solid #6366f1;
-            }
-
-            input[type="color"] {
-                height: 2.75rem;
-                width: 2.75rem;
-                padding: 0;
-                border: none;
-                background: #fff;
-                cursor: pointer;
-                margin-bottom: 0.3125rem;
-            }
-
-            textarea {
-                resize: vertical;
-                min-height: 4rem;
-                max-height: 10rem;
-            }
-
-            .preview {
-                padding: 2.375rem 2rem;
-                border: 1.5px solid #c7d2fe;
-                min-height: 6.875rem;
-                margin-top: 1.25rem;
-                border-radius: 0.625rem;
-            }
-
-            .preview h2 {
-                margin-top: 0;
-                font-size: 1.25rem;
-                color: #6366f1;
-                font-weight: 800;
-                letter-spacing: -0.01em;
-            }
-
-            .preview p {
-                font-size: 1.25rem;
-                color: #121212;
-                margin-bottom: 0.5rem;
-            }
-
-            .contrast-checker {
-                display: flex;
-                align-items: center;
-                gap: 1.5rem;
-                background: #f8fafc;
-                border: 1.5px solid #c7d2fe;
-                border-radius: 0.625rem;
-                padding: 1.125rem 1.375rem;
-                margin: 1.25rem 0;
-                font-size: 1.125rem;
-            }
-
-            .contrast-info {
-                display: flex;
-                align-items: center;
-                gap: 0.625rem;
-                margin-right: 1.125rem;
-            }
-
-            .contrast-label {
-                font-weight: 700;
-                color: #6366f1;
-            }
-
-            .contrast-ratio {
-                font-family: Arial, Helvetica, sans-serif;
-                font-size: 1.25em;
-                color: #222;
-            }
-
-            .contrast-wcag {
-                display: flex;
-                gap: 0.75rem;
-                margin-right: 1.125rem;
-            }
-
-            .wcag-badge {
-                padding: 0.25rem 0.875rem;
-                font-weight: 700;
-                font-size: 1.05em;
-                border: 1.5px solid #c7d2fe;
-            }
-
-            .wcag-badge.pass {
-                background: #bbf7d0;
-                color: #15803d;
-                border: 1.5px solid #22c55e;
-            }
-
-            .wcag-badge.fail {
-                background: #fee2e2;
-                color: #b91c1c;
-                border: 1.5px solid #ef4444;
-            }
-
-            .contrast-desc {
                 font-size: 1rem;
-                color: #4b4b4b;
-                /* Improved contrast */
-                margin-left: 0.625rem;
+                padding: 0.5rem;
             }
 
-            .copy-btn {
-                background: #f8fafc;
-                color: #121212;
-                padding: 0.75rem 1.875rem;
-                font-size: 1.1rem;
-                border: 1px solid #c7d2fe;
-                cursor: pointer;
-                font-weight: 700;
-                margin-bottom: 1.125rem;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                transition: background 0.2s, color 0.2s;
+            .control-group {
+                min-width: 100%;
             }
-
-            .copy-btn.copied {
-                background: #22c55e;
-                color: #fff;
-            }
-
-            .code-output {
-                width: 100%;
-                background: #f2f5f9;
-                color: #18181b;
-                padding: 1.125rem 1.25rem;
-                font-family: 'JetBrains Mono', 'Fira Mono', 'Consolas', monospace;
-                overflow-x: auto;
-                border-radius: 0.625rem;
-                font-size: 1.55rem;
-                position: relative;
-                margin-bottom: 0;
-            }
-
-            .code-output .copy-btn {
-                position: absolute;
-                top: 0.875rem;
-                right: 1.125rem;
-                padding: 0.3125rem 0.875rem;
-                font-size: 0.78rem;
-                border-radius: 0.3125rem;
-                background: #23232b;
-                color: #fff;
-                border: none;
-                box-shadow: 0 1px 4px #0002;
-                opacity: 0.85;
-                z-index: 2;
-            }
-
-            .code-output .copy-btn:hover {
-                background: #23232bc6;
-                color: #fff;
-                opacity: 1;
-            }
-
-            .code-output .copy-btn.copied {
-                background: #22c55e;
-                color: #fff;
-                opacity: 1;
-            }
-
-            .code-output pre {
-                margin: 0;
-                background: none;
-                color: inherit;
-            }
-
-            /* Responsive */
-            @media (max-width: 768px) {
-                .container {
-                    padding: 1.25rem;
-                }
-
-                .controls {
-                    gap: 1.25rem;
-                    padding: 1.25rem;
-                }
-
-                .code-output {
-                    font-size: 1.3rem;
-                }
-
-                footer.social-footer {
-                    flex-wrap: wrap;
-                    gap: 0.75rem;
-                }
-
-                .social-btn {
-                    min-width: 11.25rem;
-                    font-size: 0.9375rem;
-                    padding: 0.5rem 1rem;
-                }
-            }
-
-            @media (max-width: 480px) {
-                .controls {
-                    flex-direction: column;
-                    gap: 1rem;
-                    padding: 1rem 0.75rem;
-                }
-
-                .control-group {
-                    min-width: 100%;
-                }
-
-                .preview {
-                    padding: 1rem 0.75rem;
-                    font-size: 1.1rem;
-                }
-
-                .preview h2 {
-                    font-size: 1.2rem;
-                }
-
-                .contrast-checker {
-                    flex-direction: column;
-                    align-items: flex-start;
-                    gap: 0.5rem;
-                    padding: 0.75rem 0.625rem;
-                    font-size: 0.95rem;
-                }
-
-                .contrast-info,
-                .contrast-wcag {
-                    gap: 0.5rem;
-                }
-
-                .code-output {
-                    font-size: 1.1rem;
-                }
-
-                .copy-btn {
-                    padding: 0.625rem 1.125rem;
-                    font-size: 1rem;
-                }
-
-                footer.social-footer {
-                    flex-direction: column;
-                    align-items: center;
-                    gap: 0.625rem;
-                }
-
-                .social-btn {
-                    width: 80%;
-                    justify-content: center;
-                    font-size: 0.875rem;
-                    padding: 0.625rem;
-                }
-
-                <<<<<<< HEAD input,
-                select,
-                textarea {
-                    font-size: 1rem;
-                    padding: 0.5rem;
-                }
-
-                .control-group {
-                    min-width: 100%;
-                }
-
-                =======>>>>>>>1aa45a5e20abf2e89e064d22e147758d56721a99
-            }
-
-            footer.social-footer {
-                display: flex;
-                flex-wrap: nowrap;
-                gap: 1rem;
-                align-items: center;
-                justify-content: center;
-                margin: 2rem;
-                padding: 1.25rem;
-                flex-direction: row;
-            }
-
-            .social-btn {
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                padding: 0.5rem 1.5rem;
-                font-weight: 500;
-                text-align: center;
-                border: 1px solid transparent;
-                text-decoration: none;
-                color: #121212;
-                gap: 0.5rem;
-                min-width: 13.75rem;
-                border-radius: 0.75rem;
-                transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-            }
-
-            .social-btn svg {
-                width: 1.5rem;
-                height: 1.5rem;
-                margin-right: 0.5rem;
-                flex-shrink: 0;
-            }
-
-            .youtube-btn {
-                border-color: #c4302b;
-            }
-
-            .youtube-btn:hover {
-                background: #ffc8c6;
-            }
-
-            .twitch-btn {
-                border-color: #0A66C2;
-            }
-
-            .twitch-btn:hover {
-                background: #cce0ff;
-            }
-
-            .discord-btn {
-                border-color: #181717;
-                color: #181717;
-            }
-
-            .discord-btn:hover {
-                background: #d3d3d3;
-            }
-
-            .x-btn {
-                border-color: #111;
-            }
-
-            .x-btn:hover {
-                background: #d3d3d3;
-            }
+        }
     </style>
 </head>
 
@@ -575,31 +599,31 @@
         <div class="controls">
             <div class="control-group">
                 <label for="textColor">Color del texto:</label>
-                <<<<<<< HEAD <input type="color" id="textColor" value="#000000"
-                    aria-label="Seleccionar color del texto">
-                    =======
-                    <input type="color" id="textColor" value="#FFFF00" aria-label="Seleccionar color del texto">
-                    >>>>>>> 1aa45a5e20abf2e89e064d22e147758d56721a99
-                    <label for="fontSize">Tamaño de fuente:</label>
-                    <select id="fontSize" aria-label="Seleccionar tamaño de fuente">
-                        <option value="14px">14px</option>
-                        <option value="16px">16px</option>
-                        <option value="18px">18px</option>
-                        <option value="24px" selected>24px</option>
-                    </select>
+                <input type="color" id="textColor" value="#000000" aria-label="Seleccionar color del texto">
+                <label for="fontSize">Tamaño de fuente:</label>
+                <select id="fontSize" aria-label="Seleccionar tamaño de fuente">
+                    <option value="14px">14px</option>
+                    <option value="16px">16px</option>
+                    <option value="18px">18px</option>
+                    <option value="24px" selected>24px</option>
+                </select>
+                <label for="textAlign">Alineación de texto:</label>
+                <select id="textAlign" aria-label="Seleccionar alineación de texto">
+                    <option value="left" selected>Izquierda</option>
+                    <option value="center">Centro</option>
+                    <option value="right">Derecha</option>
+                    <option value="justify">Justificado</option>
+                </select>
             </div>
             <div class="control-group">
                 <label for="bgColor">Color de fondo:</label>
-                <<<<<<< HEAD <input type="color" id="bgColor" value="#FFFFFF" aria-label="Seleccionar color de fondo">
-                    =======
-                    <input type="color" id="bgColor" value="#000000" aria-label="Seleccionar color de fondo">
-                    >>>>>>> 1aa45a5e20abf2e89e064d22e147758d56721a99
-                    <label for="fontWeight">Peso de fuente:</label>
-                    <select id="fontWeight" aria-label="Seleccionar peso de fuente">
-                        <option value="normal" selected>Normal</option>
-                        <option value="bold">Bold</option>
-                        <option value="lighter">Light</option>
-                    </select>
+                <input type="color" id="bgColor" value="#FFFFFF" aria-label="Seleccionar color de fondo">
+                <label for="fontWeight">Peso de fuente:</label>
+                <select id="fontWeight" aria-label="Seleccionar peso de fuente">
+                    <option value="normal" selected>Normal</option>
+                    <option value="bold">Bold</option>
+                    <option value="lighter">Light</option>
+                </select>
             </div>
             <div class="control-group">
                 <label for="previewText">Texto de vista previa:</label>
@@ -629,24 +653,22 @@
                 <span class="wcag-badge" id="aaBadge">AA</span>
                 <span class="wcag-badge" id="aaaBadge">AAA</span>
             </div>
-            <div class="contrast-desc" id="contrastDesc"></div>
+            <div class="contrast-desc" id="contrastDesc" role="status"></div>
+        </div>
+
+        <div style="display: flex; gap: 10px;">
+            <button class="copy-btn" onclick="copyCode()" aria-label="Copiar código CSS">Copiar CSS</button>
+            <button class="download-btn" onclick="downloadCode()" aria-label="Descargar código CSS">Descargar
+                CSS</button>
         </div>
 
         <div class="code-output">
-            <button class="copy-btn" onclick="copyCode()" aria-label="Copiar código CSS">Copiar CSS</button>
+            <button class="copy-btn" onclick="copyCode()" aria-label="Copiar código CSS">Copiar</button>
             <pre id="cssCode"></pre>
         </div>
     </div>
 
     <footer class="social-footer">
-        <a target="_blank" rel="noopener" href="https://www.youtube.com/@LeooBringasAtLife"
-            class="social-btn youtube-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="red">
-                <path
-                    d="M23.498 6.186a2.999 2.999 0 0 0-2.11-2.12C19.013 3.5 12 3.5 12 3.5s-7.012 0-9.387.566a2.999 2.999 0 0 0-2.11 2.12A31.19 31.19 0 0 0 0 12a31.19 31.19 0 0 0 .503 5.814 2.999 2.999 0 0 0 2.11 2.12C4.988 20.5 12 20.5 12 20.5s7.013 0 9.387-.566a2.999 2.999 0 0 0 2.11-2.12A31.19 31.19 0 0 0 24 12a31.19 31.19 0 0 0-.502-5.814ZM10 15.5v-7l6 3.5-6 3.5Z" />
-            </svg>
-            Sígueme en YouTube
-        </a>
         <a href="https://github.com/LeoBringasAtLife" target="_blank" rel="noopener" class="social-btn discord-btn">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#181717">
                 <path
@@ -673,10 +695,14 @@
     </footer>
 
     <script>
+        // Cache para resultados de contraste
+        const contrastCache = new Map();
+
         const textColor = document.getElementById('textColor');
         const bgColor = document.getElementById('bgColor');
         const fontSize = document.getElementById('fontSize');
         const fontWeight = document.getElementById('fontWeight');
+        const textAlign = document.getElementById('textAlign');
         const previewText = document.getElementById('previewText');
         const cssSelector = document.getElementById('cssSelector');
         const preview = document.getElementById('preview');
@@ -685,6 +711,10 @@
         const aaBadge = document.getElementById('aaBadge');
         const aaaBadge = document.getElementById('aaaBadge');
         const contrastDesc = document.getElementById('contrastDesc');
+
+        // Establecer colores por defecto con mejor contraste
+        textColor.value = '#000000';
+        bgColor.value = '#FFFFFF';
 
         // Utilidades de color
         function hexToRgb(hex) {
@@ -710,11 +740,22 @@
         }
 
         function getContrastRatio(hex1, hex2) {
+            // Verificar si ya tenemos este resultado en caché
+            const cacheKey = `${hex1}-${hex2}`;
+            if (contrastCache.has(cacheKey)) {
+                return contrastCache.get(cacheKey);
+            }
+
             const lum1 = luminance(hexToRgb(hex1));
             const lum2 = luminance(hexToRgb(hex2));
             const brightest = Math.max(lum1, lum2);
             const darkest = Math.min(lum1, lum2);
-            return (brightest + 0.05) / (darkest + 0.05);
+            const ratio = (brightest + 0.05) / (darkest + 0.05);
+
+            // Guardar en caché
+            contrastCache.set(cacheKey, ratio);
+
+            return ratio;
         }
 
         function updateContrastChecker() {
@@ -748,40 +789,55 @@
             }
         }
 
-        function applyStyles(element, isH2 = false) {
+        function applyPreviewStyles() {
+            try {
+                preview.querySelectorAll('p').forEach(p => applyElementStyles(p));
+                const previewH2 = preview.querySelector('h2');
+                if (previewH2) applyElementStyles(previewH2, true);
+
+                // Cambiar fondo del contenedor preview
+                preview.style.background = bgColor.value;
+            } catch (error) {
+                console.error('Error al aplicar estilos:', error);
+            }
+        }
+
+        function applyElementStyles(element, isH2 = false) {
             element.style.color = textColor.value;
             element.style.backgroundColor = 'transparent';
             element.style.fontSize = fontSize.value;
             element.style.fontWeight = isH2 && fontWeight.value === 'lighter' ? 'bold' : fontWeight.value;
+            element.style.textAlign = textAlign.value;
             element.style.padding = '0';
             element.style.marginBottom = isH2 ? '0' : '0.5rem';
             element.style.borderRadius = '0';
             element.style.boxShadow = 'none';
         }
 
-        function updatePreview() {
+        function updatePreviewText() {
             try {
-                // Actualizar texto del preview
                 const previewP = preview.querySelector('p');
                 if (previewP) previewP.textContent = previewText.value || 'Modifica el diseño y observa cómo esta vista previa se adapta al instante.';
-
-                // Aplicar estilos
-                preview.querySelectorAll('p').forEach(p => applyStyles(p));
-                const previewH2 = preview.querySelector('h2');
-                if (previewH2) applyStyles(previewH2, true);
-
-                // Cambiar fondo del contenedor preview
-                preview.style.background = bgColor.value;
-
-                // Generar código CSS
-                const selector = cssSelector.value;
-                const code = `${selector} {\n    color: ${textColor.value};\n    background-color: ${bgColor.value};\n    font-size: ${fontSize.value};\n    font-weight: ${fontWeight.value};\n}`;
-                cssCode.textContent = code;
-
-                updateContrastChecker();
             } catch (error) {
-                console.error('Error al actualizar vista previa:', error);
+                console.error('Error al actualizar texto:', error);
             }
+        }
+
+        function generateCode() {
+            try {
+                const selector = cssSelector.value;
+                const code = `${selector} {\n    color: ${textColor.value};\n    background-color: ${bgColor.value};\n    font-size: ${fontSize.value};\n    font-weight: ${fontWeight.value};\n    text-align: ${textAlign.value};\n}`;
+                cssCode.textContent = code;
+            } catch (error) {
+                console.error('Error al generar código:', error);
+            }
+        }
+
+        function updatePreview() {
+            updatePreviewText();
+            applyPreviewStyles();
+            generateCode();
+            updateContrastChecker();
         }
 
         function copyCode() {
@@ -800,6 +856,23 @@
             }
         }
 
+        function downloadCode() {
+            try {
+                const cssContent = cssCode.textContent.trim();
+                const blob = new Blob([cssContent], { type: 'text/css' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'estilos.css';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            } catch (error) {
+                console.error('Error al descargar código:', error);
+            }
+        }
+
         function debounce(fn, ms) {
             let timeout;
             return function (...args) {
@@ -813,6 +886,7 @@
         bgColor.addEventListener('input', debounce(updatePreview, 100));
         fontSize.addEventListener('change', updatePreview);
         fontWeight.addEventListener('change', updatePreview);
+        textAlign.addEventListener('change', updatePreview);
         previewText.addEventListener('input', debounce(updatePreview, 100));
         cssSelector.addEventListener('change', updatePreview);
 
